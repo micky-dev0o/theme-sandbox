@@ -1,0 +1,41 @@
+// ==========================================================================
+// TYPOGRAPHY
+// ==========================================================================
+@use '../abstracts' as *;
+
+body {
+  font-family: $font-body;
+  font-size: $fs-base;
+  color: $color-text;
+  background-color: $color-bg;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: $fw-semibold;
+  line-height: 1.2;
+  color: $color-secondary;
+}
+
+h1 { font-size: $fs-4xl; }
+h2 { font-size: $fs-3xl; }
+h3 { font-size: $fs-2xl; }
+h4 { font-size: $fs-xl; }
+h5 { font-size: $fs-lg; }
+h6 { font-size: $fs-md; }
+
+p {
+  margin-bottom: $space-4;
+  color: $color-text-light;
+}
+
+a {
+  transition: color $transition-fast;
+  &:hover { color: $color-primary; }
+}
+
+@include bp-down(md) {
+  h1 { font-size: $fs-3xl; }
+  h2 { font-size: $fs-2xl; }
+  h3 { font-size: $fs-xl; }
+}

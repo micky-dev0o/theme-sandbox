@@ -1,0 +1,138 @@
+// ==========================================================================
+// MIXINS — this is the 10x speed unlock. Stop writing display:flex by hand.
+// ==========================================================================
+@use 'variables' as *;
+@use 'functions' as *;
+@use 'sass:math';
+
+// ---- RESPONSIVE BREAKPOINTS ----
+// Usage: @include bp(md) { ... }
+@mixin bp($size) {
+  @if $size == sm      { @media (min-width: $bp-sm)  { @content; } }
+  @else if $size == md { @media (min-width: $bp-md)  { @content; } }
+  @else if $size == lg { @media (min-width: $bp-lg)  { @content; } }
+  @else if $size == xl { @media (min-width: $bp-xl)  { @content; } }
+  @else if $size == xxl{ @media (min-width: $bp-xxl) { @content; } }
+}
+
+// Usage: @include bp-down(md) { ... } -- for "below this size" overrides
+@mixin bp-down($size) {
+  @if $size == sm      { @media (max-width: $bp-sm - 1px)  { @content; } }
+  @else if $size == md { @media (max-width: $bp-md - 1px)  { @content; } }
+  @else if $size == lg { @media (max-width: $bp-lg - 1px)  { @content; } }
+  @else if $size == xl { @media (max-width: $bp-xl - 1px)  { @content; } }
+}
+
+// ---- FLEXBOX SHORTHANDS ----
+// Usage: @include flex(row, center, space-between, wrap);
+@mixin flex($direction: row, $align: stretch, $justify: flex-start, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// ---- CSS GRID SHORTHANDS ----
+// Usage: @include grid(3, 2rem); -> 3 equal columns, 2rem gap
+@mixin grid($cols: 1, $gap: $space-4) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}
+
+// Auto-fit responsive grid without media queries
+// Usage: @include grid-auto-fit(250px, 1.5rem);
+@mixin grid-auto-fit($min-width: 250px, $gap: $space-4) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// ---- CONTAINER ----
+@mixin container($max-width: $container-xl) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $space-4;
+  padding-right: $space-4;
+
+  @include bp(lg) {
+    padding-left: $space-6;
+    padding-right: $space-6;
+  }
+}
+
+// ---- BUTTON RESET / BASE ----
+@mixin button-reset {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+// ---- TRUNCATE TEXT ----
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ---- ABSOLUTE CENTER ----
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ---- ASPECT RATIO BOX (great for hero images / video embeds) ----
+@mixin aspect-ratio($width: 16, $height: 9) {
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    padding-top: math.percentage(math.div($height, $width));
+  }
+  > * {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+  }
+}
+
+// ---- VISUALLY HIDDEN (accessible, for skip-links / screen reader text) ----
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}

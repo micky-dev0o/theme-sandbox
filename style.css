@@ -1,0 +1,18 @@
+/*
+Theme Name:   Your Theme Name Here
+Theme URI:    https://yourwebsite.com
+Author:       Your Name
+Author URI:   https://yourwebsite.com
+Description:  Custom WordPress theme built for [Client Name]. Boilerplate base.
+Version:      1.0.0
+Text Domain:  client-theme
+*/
+
+/*
+NOTE: This file is required by WordPress to identify the theme (the comment
+block above is read by WP admin), but it is NOT where your actual CSS lives.
+Your real styles are written in /src/scss and compiled to /dist/style.css,
+which is enqueued properly in inc/enqueue.php (cache-busted, minified for prod).
+
+Do not write CSS directly into this file. Keep it as metadata only.
+*/

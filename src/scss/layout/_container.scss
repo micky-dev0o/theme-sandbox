@@ -1,0 +1,35 @@
+// ==========================================================================
+// CONTAINERS — wrap sections consistently across every theme
+// ==========================================================================
+@use '../abstracts' as *;
+
+.container {
+  @include container($container-xl);
+}
+
+.container-sm { @include container($container-sm); }
+.container-md { @include container($container-md); }
+.container-lg { @include container($container-lg); }
+.container-full {
+  width: 100%;
+  padding-left: $space-4;
+  padding-right: $space-4;
+}
+
+// Section spacing (use on every <section> in WP templates)
+.section {
+  padding-top: $space-10;
+  padding-bottom: $space-10;
+
+  @include bp-down(md) {
+    padding-top: $space-8;
+    padding-bottom: $space-8;
+  }
+}
+
+.section-sm { padding-top: $space-6; padding-bottom: $space-6; }
+.section-lg { padding-top: $space-12; padding-bottom: $space-12; }
+
+.section--alt {
+  background-color: $color-bg-alt;
+}

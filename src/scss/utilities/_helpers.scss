@@ -1,0 +1,53 @@
+// ==========================================================================
+// UTILITY CLASSES — quick overrides, avoid writing custom CSS for one-offs
+// ==========================================================================
+@use '../abstracts' as *;
+
+// Margin / padding scale utilities
+@each $name, $value in (1: $space-1, 2: $space-2, 3: $space-3, 4: $space-4, 5: $space-5, 6: $space-6, 8: $space-8, 10: $space-10) {
+  .m-#{$name}  { margin: $value; }
+  .mt-#{$name} { margin-top: $value; }
+  .mb-#{$name} { margin-bottom: $value; }
+  .ml-#{$name} { margin-left: $value; }
+  .mr-#{$name} { margin-right: $value; }
+
+  .p-#{$name}  { padding: $value; }
+  .pt-#{$name} { padding-top: $value; }
+  .pb-#{$name} { padding-bottom: $value; }
+  .pl-#{$name} { padding-left: $value; }
+  .pr-#{$name} { padding-right: $value; }
+}
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+.m-0 { margin: 0; }
+.p-0 { padding: 0; }
+
+// Text utilities
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+.text-white  { color: $color-white; }
+.text-primary{ color: $color-primary; }
+.text-muted  { color: $color-text-light; }
+
+.fw-bold     { font-weight: $fw-bold; }
+.fw-semibold { font-weight: $fw-semibold; }
+.fw-medium   { font-weight: $fw-medium; }
+
+// Display utilities
+.hidden { display: none; }
+.block  { display: block; }
+
+@include bp-down(md) {
+  .hide-mobile { display: none !important; }
+}
+@include bp(md) {
+  .hide-desktop { display: none !important; }
+}
+
+// Visibility helper for accessibility (skip links etc.)
+.sr-only { @include visually-hidden; }
+
+// Width helpers
+.w-full { width: 100%; }
+.max-w-full { max-width: 100%; }

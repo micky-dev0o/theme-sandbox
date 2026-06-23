@@ -1,0 +1,61 @@
+// ==========================================================================
+// CARDS — service cards, blog cards, portfolio items, testimonials
+// ==========================================================================
+@use '../abstracts' as *;
+
+.card {
+  background: $color-white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition-normal, transform $transition-normal;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-4px);
+  }
+
+  .card-image {
+    @include aspect-ratio(16, 9);
+    background: $color-bg-alt;
+  }
+
+  .card-body {
+    padding: $space-5;
+  }
+
+  .card-title {
+    font-size: $fs-lg;
+    margin-bottom: $space-2;
+  }
+
+  .card-text {
+    font-size: $fs-md;
+    color: $color-text-light;
+    margin-bottom: $space-4;
+  }
+}
+
+// Testimonial variant
+.testimonial-card {
+  @extend .card;
+  padding: $space-6;
+  text-align: center;
+
+  .testimonial-quote {
+    font-size: $fs-lg;
+    font-style: italic;
+    color: $color-text;
+    margin-bottom: $space-4;
+  }
+
+  .testimonial-author {
+    @include flex-center;
+    gap: $space-3;
+
+    img {
+      width: 48px; height: 48px;
+      border-radius: $radius-full;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+// ==========================================================================
+// MAIN.SCSS — single entry point. Compiles to dist/style.css
+// Modern Sass module system (@use), not deprecated @import.
+// ==========================================================================
+
+// Base
+@use 'base/reset';
+@use 'base/typography';
+
+// Layout
+@use 'layout/grid';
+@use 'layout/container';
+@use 'layout/header-footer';
+
+// Components
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
+
+// Utilities (loaded last so they can override)
+@use 'utilities/helpers';

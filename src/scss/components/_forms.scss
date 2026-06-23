@@ -1,0 +1,55 @@
+// ==========================================================================
+// FORMS — works with Contact Form 7 / WPForms / Gravity Forms output
+// ==========================================================================
+@use '../abstracts' as *;
+
+input, textarea, select {
+  width: 100%;
+  padding: $space-3 $space-4;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  font-size: $fs-md;
+  background: $color-white;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+  }
+
+  &::placeholder {
+    color: $color-text-light;
+  }
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+label {
+  display: block;
+  margin-bottom: $space-2;
+  font-weight: $fw-medium;
+  font-size: $fs-sm;
+  color: $color-secondary;
+}
+
+.form-group {
+  margin-bottom: $space-4;
+}
+
+// Contact Form 7 specific overrides
+.wpcf7-form {
+  p { margin-bottom: $space-4; }
+}
+.wpcf7-not-valid-tip {
+  color: $color-error;
+  font-size: $fs-sm;
+  margin-top: $space-1;
+}
+div.wpcf7-mail-sent-ok {
+  border-color: $color-success;
+  color: $color-success;
+}

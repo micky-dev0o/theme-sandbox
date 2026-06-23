@@ -1,0 +1,13 @@
+{
+  "name": "wp-theme-boilerplate",
+  "version": "1.0.0",
+  "description": "Reusable SCSS boilerplate for fast WordPress theme development",
+  "scripts": {
+    "build": "sass src/scss/main.scss dist/style.css --no-source-map --style=compressed",
+    "build:dev": "sass src/scss/main.scss dist/style.css --style=expanded --no-source-map",
+    "watch": "sass --watch src/scss/main.scss:dist/style.css --style=expanded"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

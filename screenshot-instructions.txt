@@ -1,0 +1,4 @@
+WordPress shows a theme thumbnail in Appearance > Themes using a file
+named exactly "screenshot.png" (1200x900px recommended) in the theme's
+root folder. Add one per client project — a quick screenshot of the
+finished homepage works fine. Delete this .txt file once you've added it.

@@ -1,0 +1,9 @@
+// ==========================================================================
+// ABSTRACTS INDEX — forwards variables, functions, mixins as one module.
+// Every other partial does: @use '../abstracts' as *;
+// That gives global access to $variables, mixins, and functions without
+// having to prefix everything (keeps things fast while building themes).
+// ==========================================================================
+@forward 'functions';
+@forward 'variables';
+@forward 'mixins';

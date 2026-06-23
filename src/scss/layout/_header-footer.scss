@@ -1,0 +1,63 @@
+// ==========================================================================
+// HEADER / FOOTER — base structural styles, customize colors per project
+// ==========================================================================
+@use '../abstracts' as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  background: $color-white;
+  box-shadow: $shadow-sm;
+
+  .header-inner {
+    @include flex-between;
+    padding-top: $space-3;
+    padding-bottom: $space-3;
+  }
+
+  .site-logo img { max-height: 48px; }
+
+  .main-nav ul {
+    @include flex(row, center, flex-end, wrap);
+    gap: $space-5;
+  }
+
+  // mobile nav toggle (pair with small JS in main.js)
+  .nav-toggle {
+    display: none;
+    @include button-reset;
+
+    @include bp-down(lg) {
+      display: block;
+    }
+  }
+
+  @include bp-down(lg) {
+    .main-nav { display: none; }
+    .main-nav.is-open { display: block; }
+  }
+}
+
+.site-footer {
+  background: $color-secondary;
+  color: rgba($color-white, 0.8);
+  padding-top: $space-10;
+  padding-bottom: $space-6;
+
+  a { color: $color-white; }
+
+  .footer-grid {
+    @include grid-auto-fit(200px, $space-6);
+    margin-bottom: $space-8;
+  }
+
+  .footer-bottom {
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $space-3;
+    border-top: 1px solid rgba($color-white, 0.1);
+    padding-top: $space-5;
+    font-size: $fs-sm;
+  }
+}

@@ -1,0 +1,45 @@
+// ==========================================================================
+// BUTTONS
+// ==========================================================================
+@use '../abstracts' as *;
+
+.btn {
+  @include flex-center;
+  display: inline-flex;
+  gap: $space-2;
+  padding: $space-3 $space-5;
+  border-radius: $radius-md;
+  font-weight: $fw-medium;
+  font-size: $fs-md;
+  transition: background $transition-fast, transform $transition-fast, box-shadow $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.btn--primary {
+  background: $color-primary;
+  color: $color-white;
+
+  &:hover { background: shade($color-primary, 15%); color: $color-white; }
+}
+
+.btn--secondary {
+  background: transparent;
+  color: $color-primary;
+  border: 2px solid $color-primary;
+
+  &:hover { background: $color-primary; color: $color-white; }
+}
+
+.btn--accent {
+  background: $color-accent;
+  color: $color-secondary;
+}
+
+.btn--lg { padding: $space-4 $space-6; font-size: $fs-lg; }
+.btn--sm { padding: $space-2 $space-4; font-size: $fs-sm; }
+
+.btn--full { width: 100%; justify-content: center; }

@@ -1,0 +1,61 @@
+// ==========================================================================
+// GRID / FLEXBOX LAYOUT SYSTEM
+// Drop these classes straight into WP templates — no need to rewrite CSS
+// every project. Combine with utility classes in _helpers.scss
+// ==========================================================================
+@use '../abstracts' as *;
+@use 'sass:math';
+
+// ---- FLEX ROW / COL SYSTEM (like a lightweight Bootstrap) ----
+.row {
+  @include flex(row, stretch, flex-start, wrap);
+  margin-left: -#{$space-3};
+  margin-right: -#{$space-3};
+
+  > .col {
+    padding-left: $space-3;
+    padding-right: $space-3;
+    flex: 1;
+  }
+}
+
+// Fixed-width columns out of 12
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 math.percentage(math.div($i, 12));
+    max-width: math.percentage(math.div($i, 12));
+    padding-left: $space-3;
+    padding-right: $space-3;
+  }
+}
+
+@include bp-down(md) {
+  // stack columns on mobile by default
+  [class^="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+// ---- COMMON FLEX UTILITY CLASSES ----
+.flex            { display: flex; }
+.flex-col        { flex-direction: column; }
+.flex-wrap       { flex-wrap: wrap; }
+.items-center    { align-items: center; }
+.items-start     { align-items: flex-start; }
+.items-end       { align-items: flex-end; }
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around  { justify-content: space-around; }
+.gap-2 { gap: $space-2; }
+.gap-4 { gap: $space-4; }
+.gap-6 { gap: $space-6; }
+
+// ---- CSS GRID UTILITY CLASSES (great for portfolio/blog/service cards) ----
+.grid-2 { @include grid(1, $space-5); @include bp(md) { @include grid(2, $space-5); } }
+.grid-3 { @include grid(1, $space-5); @include bp(md) { @include grid(2, $space-5); } @include bp(lg) { @include grid(3, $space-5); } }
+.grid-4 { @include grid(1, $space-5); @include bp(sm) { @include grid(2, $space-5); } @include bp(lg) { @include grid(4, $space-5); } }
+
+.grid-auto {
+  @include grid-auto-fit(280px, $space-5);
+}

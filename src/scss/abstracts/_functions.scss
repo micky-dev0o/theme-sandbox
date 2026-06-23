@@ -1,0 +1,20 @@
+// ==========================================================================
+// FUNCTIONS — small helpers used inside mixins/components
+// ==========================================================================
+@use 'sass:color';
+@use 'sass:math';
+
+// Convert px to rem assuming 16px base
+// Usage: font-size: rem(24px);
+@function rem($px, $base: 16px) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// Lighten/darken using color.mix (Dart Sass modern API)
+@function tint($color, $percent) {
+  @return color.mix(white, $color, $percent);
+}
+
+@function shade($color, $percent) {
+  @return color.mix(black, $color, $percent);
+}
