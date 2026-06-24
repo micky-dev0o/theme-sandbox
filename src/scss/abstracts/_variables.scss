@@ -3,12 +3,15 @@
 // ==========================================================================
 
 // Colors
-$color-primary:     #2563eb;
-$color-secondary:   #1e293b;
-$color-accent:      #f59e0b;
-$color-text:        #1f2937;
-$color-text-light:  #6b7280;
-$color-bg:          #ffffff;
+$color-accent:     #EF8354; // Coral Glow
+$color-secondary:  #D6FFB7; // Tea Green
+$color-primary:    #190933; // Dark Amethyst
+
+
+$color-text:       #2D2D2D; // body copy
+$color-text-light: #6B6B6B; // muted/secondary text
+$color-bg:         #FFFFFF;
+
 $color-bg-alt:      #f9fafb;
 $color-border:      #e5e7eb;
 $color-white:       #ffffff;
@@ -22,12 +25,12 @@ $font-body:    'Inter', sans-serif;
 
 $fs-base:   16px;
 $fs-sm:     0.875rem;
-$fs-md:     1rem;
-$fs-lg:     1.25rem;
-$fs-xl:     1.5rem;
-$fs-2xl:    2rem;
-$fs-3xl:    2.5rem;
-$fs-4xl:    3.5rem;
+$fs-md:     1.25rem;
+$fs-lg:     1.563rem;
+$fs-xl:     1.953rem;
+$fs-2xl:    2.441rem;
+$fs-3xl:    3.052rem;
+$fs-4xl:    3.815rem;
 
 $fw-light:    300;
 $fw-regular:  400;
