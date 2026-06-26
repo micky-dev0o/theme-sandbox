@@ -28,7 +28,7 @@
  */
 
 // ── Defaults ──────────────────────────────────────────────────────────────────
-$logo_url         = $args['logo_url']         ?? get_template_directory_uri() . '/assets/images/techtlk-logo.svg';
+$logo_url         = $args['logo_url']         ?? get_template_directory_uri() . '/assets/images/logo.png';
 $logo_alt         = $args['logo_alt']         ?? 'Techtlk';
 $logo_link        = $args['logo_link']        ?? home_url('/');
 $address          = $args['address']          ?? 'New Jersey, 07023, USA';
@@ -60,7 +60,7 @@ $nav_items = $args['nav_items'] ?? array(
      All three are children of .site-header so every piece
      can be targeted as .site-header__* in a single SCSS block.
      ============================================================ -->
-<header class="site-header" role="banner">
+<header class="container site-header" role="banner">
 
   <!-- ── Top Bar ─────────────────────────────────────────────── -->
   <div class="site-header__topbar">
@@ -112,20 +112,17 @@ $nav_items = $args['nav_items'] ?? array(
     </div>
   </div>
   <!-- ── /Top Bar ─────────────────────────────────────────────── -->
+  <!-- Logo -->
+  <a href="<?php echo esc_url($logo_link); ?>" class="site-header__logo" aria-label="<?php echo esc_attr($logo_alt); ?> — Return to homepage">
+    <img
+      src="<?php echo esc_url($logo_url); ?>"
+      alt="<?php echo esc_attr($logo_alt); ?>"
+      class="site-header__logo-img" />
+  </a>
 
   <!-- ── Main Bar ─────────────────────────────────────────────── -->
   <div class="site-header__bar">
     <div class="container site-header__bar-inner">
-
-      <!-- Logo -->
-      <a href="<?php echo esc_url($logo_link); ?>" class="site-header__logo" aria-label="<?php echo esc_attr($logo_alt); ?> — Return to homepage">
-        <img
-          src="<?php echo esc_url($logo_url); ?>"
-          alt="<?php echo esc_attr($logo_alt); ?>"
-          width="140"
-          height="40"
-          class="site-header__logo-img" />
-      </a>
 
       <!-- Primary nav (desktop) -->
       <nav class="site-header__primary-nav" aria-label="Primary navigation">
@@ -186,29 +183,29 @@ $nav_items = $args['nav_items'] ?? array(
           </svg>
         </a>
       </div>
-
-      <!-- Hamburger (hidden on desktop via CSS) -->
-      <button
-        class="site-header__hamburger"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="site-header__mobile-nav">
-        <span class="site-header__hamburger-bar" aria-hidden="true"></span>
-        <span class="site-header__hamburger-bar" aria-hidden="true"></span>
-        <span class="site-header__hamburger-bar" aria-hidden="true"></span>
-      </button>
       <?php /* JS needed: toggle aria-expanded + hidden attribute on #site-header__mobile-nav */ ?>
 
     </div>
   </div>
   <!-- ── /Main Bar ─────────────────────────────────────────────── -->
-
+  <!-- Hamburger (hidden on desktop via CSS) -->
+  <button
+    class="site-header__hamburger"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="site-header__mobile-nav">
+    <svg class="site-header__hamburger-bar nav_menu--closed" data-slot=" icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <svg class="site-header__hamburger-bar nav_menu--opened btn--primary btn--full" data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
   <!-- ── Mobile Nav Panel (hidden by default, toggled via JS) ─── -->
   <nav
     id="site-header__mobile-nav"
     class="site-header__mobile-nav"
-    aria-label="Mobile navigation"
-    hidden>
+    aria-label="Mobile navigation">
     <ul class="site-header__mobile-nav-list" role="list">
       <?php foreach ($nav_items as $item) :
         $is_current = ! empty($item['is_current']);

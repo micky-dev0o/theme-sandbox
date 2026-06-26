@@ -1,25 +1,112 @@
 @use "../abstracts/" as *;
 
+// ==========================================================================
+// Base resets
+// ==========================================================================
+// Strip default margin so the fixed/sticky header math below isn't thrown
+// off by browser default spacing, on both desktop and mobile.
+
+html {
+  margin: 0 !important;
+
+  @include bp-down(md) {
+    margin: 0 !important;
+  }
+}
+
+body {
+  // Establishes a positioning context for the mobile nav's absolute overlay.
+  @include bp-down(md) {
+    position: relative;
+  }
+}
+
+// ==========================================================================
+// Site header
+// ==========================================================================
+
 .site-header {
-  &__mobile_nav {
-    display: none;
-  }
+  position: relative;
 
-  &__topbar {
-    @include bp-down(md) {
-      display: none;
-    }
-  }
+  // On mobile, collapse the desktop topbar layout into a simple
+  // logo-left / hamburger-right row.
+  @include bp-down(md) {
+    position: static;
 
-  &__topbar-inner {
     @include flex(
       $direction: row,
       $align: center,
       $justify: space-between,
       $wrap: nowrap
     );
+    padding: $space-4 $space-4;
+  }
+
+  // ==========================================================================
+  // Logo
+  // ==========================================================================
+
+  &__logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $height-sm;
+    width: 15%;
+    background-color: $color-white;
+
+    @include flex(
+      $direction: row,
+      $align: center,
+      $justify: center,
+      $wrap: nowrap
+    );
+
+    @include bp-down(md) {
+      position: static;
+      width: fit-content;
+    }
+  }
+
+  &__logo-img {
+    max-width: 100px;
+
+    @include bp-down(md) {
+      max-width: 100px;
+    }
+  }
+
+  // ==========================================================================
+  // Desktop topbar (contact info + top-level nav)
+  // ==========================================================================
+  // Hidden entirely below the md breakpoint in favor of the hamburger.
+
+  &__topbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 85%;
+
+    @include bp-down(md) {
+      display: none;
+    }
+  }
+
+  &__topbar-inner {
     min-height: $height-sm;
     background-color: $color-accent;
+
+    @include flex(
+      $direction: row,
+      $align: center,
+      $justify: space-between,
+      $wrap: nowrap
+    );
+  }
+
+  &__bar {
+    @include bp-down(md) {
+      display: none;
+    }
   }
 
   &__contact,
@@ -49,17 +136,97 @@
 
   &__topbar-link,
   &__contact-item {
+    gap: 2px;
+
     @include flex(
       $direction: row,
       $align: stretch,
       $justify: space-between,
       $wrap: nowrap
     );
-    gap: 2px;
   }
 
   &__icon {
     width: 20px;
     height: 20px;
+  }
+
+  // ==========================================================================
+  // Hamburger toggle
+  // ==========================================================================
+  // Hidden on desktop; the two SVG states (open/closed icon) are swapped
+  // via aria-expanded rather than JS touching the icons directly, so
+  // markup and visual state can't drift out of sync.
+
+  &__hamburger {
+    display: none;
+    border: none;
+    background-color: transparent;
+
+    @include bp-down(md) {
+      display: flex;
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  &__hamburger .nav_menu--opened {
+    position: absolute;
+    z-index: 300;
+    width: 40px;
+    height: 40px;
+    padding: $space-2;
+    border-radius: 100%;
+  }
+
+  &__hamburger-bar.nav_menu--opened {
+    display: none;
+  }
+
+  &__hamburger[aria-expanded="true"] {
+    .nav_menu--closed {
+      display: none;
+    }
+
+    .nav_menu--opened {
+      display: block;
+    }
+  }
+
+  // ==========================================================================
+  // Mobile nav panel
+  // ==========================================================================
+  // Fades in/out via opacity + visibility (display can't be animated),
+  // toggled by JS adding/removing .is-open on the panel.
+
+  &__mobile-nav {
+    position: absolute;
+    inset: 0;
+    z-index: $z-dropdown;
+    background-color: $color-white;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition-normal;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__mobile-nav-list {
+    gap: $space-4;
+    padding: $space-10;
+
+    @include flex(
+      $direction: column,
+      $align: center,
+      $justify: center,
+      $wrap: nowrap
+    );
   }
 }
