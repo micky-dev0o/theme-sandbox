@@ -50,6 +50,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 90;
     height: $height-sm;
     width: 15%;
     background-color: $color-white;
@@ -85,6 +86,7 @@ body {
     top: 0;
     right: 0;
     width: 85%;
+    z-index: 90;
 
     @include bp-down(md) {
       display: none;
@@ -94,6 +96,7 @@ body {
   &__topbar-inner {
     min-height: $height-sm;
     background-color: $color-accent;
+    padding: $space-2 $space-8;
 
     @include flex(
       $direction: row,
@@ -151,6 +154,71 @@ body {
     height: 20px;
   }
 
+  // ==========================================================================
+  // Desktop nav panel
+  // ==========================================================================
+  &__bar {
+    padding: $space-10 0 $space-3 0;
+  }
+
+  &__bar-inner,
+  &__primary-nav ul,
+  &__actions,
+  &__nav-link {
+    @include flex(
+      $direction: row,
+      $align: center,
+      $justify: center,
+      $wrap: nowrap
+    );
+  }
+  &__bar-inner {
+    gap: $space-8;
+  }
+  &__primary-nav ul {
+    gap: $space-5;
+  }
+  &__actions {
+    gap: $space-6;
+  }
+  &__cta {
+    padding: $space-2 $space-3;
+  }
+  &__cta-arrow {
+    background-color: white;
+    color: $color-primary;
+    border-radius: $radius-full;
+    padding: 8px;
+  }
+  &__nav-link,
+  &__phone-text {
+    gap: $space-1;
+    color: $color-text-light;
+    font-size: $fs-sm;
+    cursor: pointer;
+  }
+  &__phone {
+    @include flex(
+      $direction: row,
+      $align: center,
+      $justify: center,
+      $wrap: nowrap
+    );
+    gap: $space-2;
+  }
+  &__phone-icon-wrap {
+    padding: $space-3;
+    border-radius: $radius-full;
+  }
+
+  &__phone-text {
+    @include flex(
+      $direction: column,
+      $align: center,
+      $justify: center,
+      $wrap: nowrap
+    );
+  }
   // ==========================================================================
   // Hamburger toggle
   // ==========================================================================

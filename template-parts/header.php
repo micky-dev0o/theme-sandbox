@@ -112,6 +112,7 @@ $nav_items = $args['nav_items'] ?? array(
     </div>
   </div>
   <!-- ── /Top Bar ─────────────────────────────────────────────── -->
+
   <!-- Logo -->
   <a href="<?php echo esc_url($logo_link); ?>" class="site-header__logo" aria-label="<?php echo esc_attr($logo_alt); ?> — Return to homepage">
     <img
@@ -133,16 +134,16 @@ $nav_items = $args['nav_items'] ?? array(
           ?>
             <li class="site-header__nav-item<?php echo $has_dropdown ? ' site-header__nav-item--has-dropdown' : ''; ?>">
               <?php if ($has_dropdown) : ?>
-                <button
+                <a
                   class="site-header__nav-link<?php echo $is_current ? ' site-header__nav-link--active' : ''; ?>"
                   aria-haspopup="true"
                   aria-expanded="false"
                   <?php echo $is_current ? 'aria-current="page"' : ''; ?>>
                   <?php echo esc_html($item['label']); ?>
-                  <svg class="site-header__chevron" aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M7 10l5 5 5-5z" />
+                  <svg class="site-header__chevron" data-slot="icon" width="12" height="12" aria-hidden="true" fill="none" stroke-width="2.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
-                </button>
+                </a>
                 <?php /* JS needed: toggle aria-expanded on click/keypress to reveal dropdown panel */ ?>
               <?php else : ?>
                 <a
@@ -161,8 +162,8 @@ $nav_items = $args['nav_items'] ?? array(
       <div class="site-header__actions">
 
         <!-- Phone CTA -->
-        <div class="site-header__phone">
-          <a href="tel:<?php echo esc_attr($phone_number_raw); ?>" class="site-header__phone-icon-wrap" aria-label="<?php echo esc_attr($phone_label); ?>">
+        <!-- <div class="site-header__phone">
+          <a href="tel:<?php echo esc_attr($phone_number_raw); ?>" class="site-header__phone-icon-wrap btn btn--primary" aria-label="<?php echo esc_attr($phone_label); ?>">
             <svg class="site-header__phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.85 21 3 13.15 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z" />
             </svg>
@@ -173,13 +174,13 @@ $nav_items = $args['nav_items'] ?? array(
               <?php echo esc_html($phone_number); ?>
             </a>
           </div>
-        </div>
+        </div> -->
 
         <!-- CTA button -->
-        <a href="<?php echo esc_url($cta_url); ?>" class="btn btn--primary btn--lg site-header__cta">
+        <a href="<?php echo esc_url($cta_url); ?>" class="btn btn--primary site-header__cta">
           <?php echo esc_html($cta_label); ?>
-          <svg class="site-header__cta-arrow" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+          <svg class="site-header__cta-arrow" width="30" height="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
           </svg>
         </a>
       </div>
@@ -197,9 +198,10 @@ $nav_items = $args['nav_items'] ?? array(
     <svg class="site-header__hamburger-bar nav_menu--closed" data-slot=" icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
-    <svg class="site-header__hamburger-bar nav_menu--opened btn--primary btn--full" data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+    <svg class="site-header__hamburger-bar nav_menu--opened btn--primary btn--full" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
     </svg>
+
   </button>
   <!-- ── Mobile Nav Panel (hidden by default, toggled via JS) ─── -->
   <nav
@@ -219,6 +221,13 @@ $nav_items = $args['nav_items'] ?? array(
           </a>
         </li>
       <?php endforeach; ?>
+      <!-- CTA button -->
+      <a href="<?php echo esc_url($cta_url); ?>" class="btn btn--primary site-header__cta">
+        <?php echo esc_html($cta_label); ?>
+        <svg class="site-header__cta-arrow" width="30" height="30" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+        </svg>
+      </a>
     </ul>
   </nav>
   <!-- ── /Mobile Nav Panel ─────────────────────────────────────── -->
