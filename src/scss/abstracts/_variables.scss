@@ -3,64 +3,63 @@
 // ==========================================================================
 
 // Colors
-$color-accent:     #EF8354; // Coral Glow
-$color-secondary:  #D6FFB7; // Tea Green
-$color-primary:    #190933; // Dark Amethyst
+$color-primary: #190933; // Dark Amethyst
+$color-secondary: #2563eb; // Tea Green
+$color-accent: #d84727; // Coral Glow
 
+$color-text: #2d2d2d; // body copy
+$color-text-light: #6b6b6b; // muted/secondary text
+$color-bg: #ffffff;
 
-$color-text:       #2D2D2D; // body copy
-$color-text-light: #6B6B6B; // muted/secondary text
-$color-bg:         #FFFFFF;
-
-$color-bg-alt:      #f9fafb;
-$color-border:      #e5e7eb;
-$color-white:       #ffffff;
-$color-black:       #000000;
-$color-success:     #16a34a;
-$color-error:       #dc2626;
+$color-bg-alt: #f9fafb;
+$color-border: #e5e7eb;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-success: #16a34a;
+$color-error: #dc2626;
 
 // Typography
-$font-heading: 'Poppins', sans-serif;
-$font-body:    'Inter', sans-serif;
+$font-heading: "Geist", sans-serif;
+$font-body: "Geist", sans-serif;
 
-$fs-base:   16px;
-$fs-sm:     0.875rem;
-$fs-md:     1.25rem;
-$fs-lg:     1.563rem;
-$fs-xl:     1.953rem;
-$fs-2xl:    2.441rem;
-$fs-3xl:    3.052rem;
-$fs-4xl:    3.815rem;
+$fs-base: 16px;
+$fs-sm: 0.875rem;
+$fs-md: 1.25rem;
+$fs-lg: 1.563rem;
+$fs-xl: 1.953rem;
+$fs-2xl: 2.441rem;
+$fs-3xl: 3.052rem;
+$fs-4xl: 3.815rem;
 
-$fw-light:    300;
-$fw-regular:  400;
-$fw-medium:   500;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
 $fw-semibold: 600;
-$fw-bold:     700;
+$fw-bold: 700;
 
 // Spacing scale (use everywhere instead of random px values)
-$space-1:  0.25rem;
-$space-2:  0.5rem;
-$space-3:  0.75rem;
-$space-4:  1rem;
-$space-5:  1.5rem;
-$space-6:  2rem;
-$space-8:  3rem;
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.5rem;
+$space-6: 2rem;
+$space-8: 3rem;
 $space-10: 4rem;
 $space-12: 6rem;
 
 // Container widths
-$container-sm:  640px;
-$container-md:  768px;
-$container-lg:  1024px;
-$container-xl:  1280px;
+$container-sm: 640px;
+$container-md: 768px;
+$container-lg: 1024px;
+$container-xl: 1280px;
 $container-max: 1440px;
 
 // Breakpoints (mobile-first)
-$bp-sm:  576px;
-$bp-md:  768px;
-$bp-lg:  992px;
-$bp-xl:  1200px;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
 $bp-xxl: 1400px;
 
 // Radius / shadow / transitions (reuse instead of guessing)
@@ -73,12 +72,16 @@ $shadow-sm: 0 1px 2px rgba($color-black, 0.05);
 $shadow-md: 0 4px 6px rgba($color-black, 0.1);
 $shadow-lg: 0 10px 25px rgba($color-black, 0.15);
 
-$transition-fast:   0.15s ease;
+$transition-fast: 0.15s ease;
 $transition-normal: 0.3s ease;
-$transition-slow:   0.5s ease;
+$transition-slow: 0.5s ease;
 
 // z-index scale (stops z-index wars)
 $z-dropdown: 100;
-$z-sticky:   200;
-$z-modal:    300;
-$z-toast:    400;
+$z-sticky: 200;
+$z-modal: 300;
+$z-toast: 400;
+
+//nav heights
+$height-sm: 50px;
+$height-lg: 100px;
